@@ -11,6 +11,7 @@ const countryInfo = document.querySelector('.country-info');
 input.addEventListener(
     'input',
     debounce(e => {
+      
         const trimmedValue = input.value.trim();
            cleanHtml();   
       if (trimmedValue !== '') {
@@ -25,8 +26,10 @@ input.addEventListener(
           } else if (foundData.length >= 2 && foundData.length <= 10) {
            
             renderCountryList(foundData);
-          } else if (foundData.length === 1) {
-      
+          } else if (foundData.length === 1) 
+          
+          {
+            
             renderOneCountry(foundData);
           }
         });
@@ -44,11 +47,12 @@ function renderCountryList(countries) {
                   </li>`;
     })
     .join ('');
+    
     countryList.innerHTML = markup;
 }
 function renderOneCountry (countries) {
     const markup = countries.map (country=> {
-        `<li>
+        return `<li>
         <img src="${country.flags.svg}" alt="Flag of ${
               country.name.official
             }" width="30" hight="20">
